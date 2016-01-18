@@ -1,0 +1,36 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+buildscript {
+    repositories {        
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+jar {
+    baseName = 'spring_boot_command_line'
+    version = '0.1.0'
+    mainClassName = "test.Application"    
+}
+
+dependencies {
+  compile("org.springframework.boot:spring-boot-starter:1.2.3.RELEASE")  
+}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    flatDir {
+        dirs 'lib'
+    }
+}
